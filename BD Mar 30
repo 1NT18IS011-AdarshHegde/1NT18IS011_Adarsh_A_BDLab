@@ -1,0 +1,245 @@
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ mongodb-compass
+^Cadmin1@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("75537c00-b26a-40a9-805b-aecac46784e3") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-03-30T14:27:19.564+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-03-30T14:27:25.225+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin       0.000GB
+company     0.000GB
+company1    0.000GB
+config      0.000GB
+empdetails  0.000GB
+local       0.000GB
+mydb        0.000GB
+practice    0.000GB
+student     0.000GB
+> use company
+switched to db company
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show collections
+Empdetails
+department
+employee
+project
+work
+> db.Empdetails.find().pretty()
+{
+	"_id" : ObjectId("6059b8f5c1e8aa1fee67d25f"),
+	"Fname" : "Rohan",
+	"Lname" : "Sharma",
+	"age" : 26,
+	"email" : "rohan@gmail.com",
+	"phone" : 9008070890,
+	"experience" : 5
+}
+{
+	"_id" : ObjectId("6059b950c1e8aa1fee67d260"),
+	"Fname" : "Adarsh",
+	"Lname" : "Hegde",
+	"age" : 20,
+	"email" : "adarsh@gmail.com",
+	"phone" : 9008070891,
+	"experience" : 1
+}
+{
+	"_id" : ObjectId("6059b975c1e8aa1fee67d261"),
+	"Fname" : "Akash",
+	"Lname" : "NS",
+	"age" : 20,
+	"email" : "akash@gmail.com",
+	"phone" : 9308070891,
+	"experience" : 2
+}
+{
+	"_id" : ObjectId("6059b9a1c1e8aa1fee67d262"),
+	"Fname" : "Aditya",
+	"Lname" : "Kumar",
+	"age" : 21,
+	"email" : "aditya@gmail.com",
+	"phone" : 9308050891,
+	"experience" : 3
+}
+{
+	"_id" : ObjectId("6059b9c4c1e8aa1fee67d263"),
+	"Fname" : "Abhay",
+	"Lname" : "Yelameli",
+	"age" : 21,
+	"email" : "abhay@gmail.com",
+	"phone" : 9308056891,
+	"experience" : 4
+}
+{
+	"_id" : ObjectId("6059b9fac1e8aa1fee67d264"),
+	"Fname" : "Mohan",
+	"Lname" : "SS",
+	"age" : 27,
+	"email" : "mohan@gmail.com",
+	"phone" : 9608056891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059ba26c1e8aa1fee67d265"),
+	"Fname" : "Aayesha",
+	"Lname" : "Nomani",
+	"age" : 29,
+	"email" : "aayesha@gmail.com",
+	"phone" : 9608066891,
+	"experience" : 7
+}
+{
+	"_id" : ObjectId("6059ba52c1e8aa1fee67d266"),
+	"Fname" : "Abhinav",
+	"Lname" : "Prakash",
+	"age" : 23,
+	"email" : "milit@gmail.com",
+	"phone" : 9608766891,
+	"experience" : 8
+}
+{
+	"_id" : ObjectId("6059ba87c1e8aa1fee67d267"),
+	"Fname" : "Ashwini",
+	"Lname" : "Hegde",
+	"age" : 33,
+	"email" : "hegde@gmail.com",
+	"phone" : 9688766891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059bab1c1e8aa1fee67d268"),
+	"Fname" : "Sneha",
+	"Lname" : "SH",
+	"age" : 34,
+	"email" : "sneha@gmail.com",
+	"phone" : 9688766891,
+	"experience" : 3
+}
+{
+	"_id" : ObjectId("6059c2081a8e42ea7739c438"),
+	"fname" : "Rachel",
+	"lname" : "Smith",
+	"age" : 25,
+	"email" : "Rachel@gmail.com",
+	"phone" : 9481113463,
+	"experience" : 5
+}
+> db.department.find().pretty()
+{
+	"_id" : ObjectId("6061a117a35e6926831c8ea0"),
+	"dno_id" : "06",
+	"d_name" : "research",
+	"d_location" : "bangalore"
+}
+{
+	"_id" : ObjectId("6061a117a35e6926831c8ea1"),
+	"dno_id" : "04",
+	"d_name" : "abc",
+	"d_location" : "jayanagar"
+}
+{
+	"_id" : ObjectId("6061a117a35e6926831c8ea2"),
+	"dno_id" : "08",
+	"d_name" : "xyz",
+	"d_location" : "malleshwaram"
+}
+> db.project.find().pretty()
+{
+	"_id" : ObjectId("6061a3afa35e6926831c8ea3"),
+	"p_id" : "101",
+	"p_name" : "bdc",
+	"e_id" : "03"
+}
+{
+	"_id" : ObjectId("6061a3afa35e6926831c8ea4"),
+	"p_id" : "102",
+	"p_name" : "aaa",
+	"e_id" : "02"
+}
+{
+	"_id" : ObjectId("6061a3afa35e6926831c8ea5"),
+	"p_id" : "103",
+	"p_name" : "hij",
+	"e_id" : "099"
+}
+> db.work.find().pretty()
+{
+	"_id" : 8752,
+	"author" : "Dante",
+	"copies" : 1,
+	"No_of_Hrs" : "5",
+	"fname" : "Rohan"
+}
+{ "_id" : 7000, "author" : "Homer", "No_of_Hrs" : "8", "fname" : "Abhay" }
+{
+	"_id" : 7020,
+	"author" : "Homer",
+	"copies" : 10,
+	"No_of_Hrs" : "10",
+	"fname" : "Adarsh"
+}
+{
+	"_id" : 8645,
+	"author" : "Dante",
+	"copies" : 2,
+	"No_of_Hrs" : "7",
+	"fname" : "Aakash"
+}
+{
+	"_id" : 8751,
+	"author" : "Dante",
+	"copies" : 2,
+	"No_of_Hrs" : "8",
+	"fname" : "Aditya"
+}
+> db.employee.find().pretty()
+{
+	"_id" : ObjectId("60619d13a35e6926831c8e9d"),
+	"e_id" : "01",
+	"fname" : "akash",
+	"lname" : "s",
+	"age" : "35",
+	"dno" : "05",
+	"gender" : "m",
+	"salary" : "25000"
+}
+{
+	"_id" : ObjectId("60619e3ba35e6926831c8e9e"),
+	"e_id" : "02",
+	"fname" : "bhaskar",
+	"lname" : "v",
+	"age" : "28",
+	"dno" : "04",
+	"gender" : "m",
+	"salary" : "15000"
+}
+{
+	"_id" : ObjectId("60619e3ba35e6926831c8e9f"),
+	"e_id" : "03",
+	"fname" : "gayathri",
+	"lname" : "s",
+	"age" : "20",
+	"dno" : "06",
+	"gender" : "f",
+	"salary" : "40000"
+}
+

@@ -1,0 +1,272 @@
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Error: couldn't connect to server 127.0.0.1:27017, connection attempt failed: SocketException: Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+connect@src/mongo/shell/mongo.js:374:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl status mongod
+[sudo] password for admin1: 
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor prese>
+     Active: inactive (dead)
+       Docs: https://docs.mongodb.org/manual
+
+Mar 23 14:46:11 admin1-HP-280-G4-MT-Business-PC systemd[1]: /lib/systemd/system>
+
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl start mongod
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl status mongod
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor prese>
+     Active: active (running) since Tue 2021-03-23 14:46:33 IST; 3s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 1885 (mongod)
+     Memory: 192.6M
+     CGroup: /system.slice/mongod.service
+             └─1885 /usr/bin/mongod --config /etc/mongod.conf
+
+Mar 23 14:46:33 admin1-HP-280-G4-MT-Business-PC systemd[1]: Started MongoDB Dat>
+
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl enable mongod
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /lib/systemd/system/mongod.service.
+admin1@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("21bff551-8192-40c0-8d57-08b0e36877d4") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-03-23T14:46:34.264+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-03-23T14:46:36.057+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin       0.000GB
+config      0.000GB
+empdetails  0.000GB
+local       0.000GB
+> use company
+switched to db company
+> db.createCollection("Empdetails")
+{ "ok" : 1 }
+> db.Empdetails.insert({Fname:"Rohan",Lname:"Sharma",age:26,email:"rohan@gmail.com",phone:9008070890,experience:5})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.find()
+{ "_id" : ObjectId("6059b8f5c1e8aa1fee67d25f"), "Fname" : "Rohan", "Lname" : "Sharma", "age" : 26, "email" : "rohan@gmail.com", "phone" : 9008070890, "experience" : 5 }
+> db.Empdetails.insert({Fname:"Adarsh",Lname:"Hegde",age:20,email:"adarsh@gmail.com",phone:9008070891,experience:1})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Akash",Lname:"NS",age:20,email:"akash@gmail.com",phone:9308070891,experience:2})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Aditya",Lname:"Kumar",age:21,email:"aditya@gmail.com",phone:9308050891,experience:3})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Abhay",Lname:"Yelameli",age:21,email:"abhay@gmail.com",phone:9308056891,experience:4})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Mohan",Lname:"SS",age:27,email:"mohan@gmail.com",phone:9608056891,experience:6})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Aayesha",Lname:"Nomani",age:29,email:"aayesha@gmail.com",phone:9608066891,experience:7})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Abhinav",Lname:"Prakash",age:23,email:"milit@gmail.com",phone:9608766891,experience:8})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Ashwini",Lname:"Hegde",age:33,email:"hegde@gmail.com",phone:9688766891,experience:6})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.insert({Fname:"Sneha",Lname:"SH",age:34,email:"sneha@gmail.com",phone:9688766891,experience:3})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.find()
+{ "_id" : ObjectId("6059b8f5c1e8aa1fee67d25f"), "Fname" : "Rohan", "Lname" : "Sharma", "age" : 26, "email" : "rohan@gmail.com", "phone" : 9008070890, "experience" : 5 }
+{ "_id" : ObjectId("6059b950c1e8aa1fee67d260"), "Fname" : "Adarsh", "Lname" : "Hegde", "age" : 20, "email" : "adarsh@gmail.com", "phone" : 9008070891, "experience" : 1 }
+{ "_id" : ObjectId("6059b975c1e8aa1fee67d261"), "Fname" : "Akash", "Lname" : "NS", "age" : 20, "email" : "akash@gmail.com", "phone" : 9308070891, "experience" : 2 }
+{ "_id" : ObjectId("6059b9a1c1e8aa1fee67d262"), "Fname" : "Aditya", "Lname" : "Kumar", "age" : 21, "email" : "aditya@gmail.com", "phone" : 9308050891, "experience" : 3 }
+{ "_id" : ObjectId("6059b9c4c1e8aa1fee67d263"), "Fname" : "Abhay", "Lname" : "Yelameli", "age" : 21, "email" : "abhay@gmail.com", "phone" : 9308056891, "experience" : 4 }
+{ "_id" : ObjectId("6059b9fac1e8aa1fee67d264"), "Fname" : "Mohan", "Lname" : "SS", "age" : 27, "email" : "mohan@gmail.com", "phone" : 9608056891, "experience" : 6 }
+{ "_id" : ObjectId("6059ba26c1e8aa1fee67d265"), "Fname" : "Aayesha", "Lname" : "Nomani", "age" : 29, "email" : "aayesha@gmail.com", "phone" : 9608066891, "experience" : 7 }
+{ "_id" : ObjectId("6059ba52c1e8aa1fee67d266"), "Fname" : "Abhinav", "Lname" : "Prakash", "age" : 23, "email" : "milit@gmail.com", "phone" : 9608766891, "experience" : 8 }
+{ "_id" : ObjectId("6059ba87c1e8aa1fee67d267"), "Fname" : "Ashwini", "Lname" : "Hegde", "age" : 33, "email" : "hegde@gmail.com", "phone" : 9688766891, "experience" : 6 }
+{ "_id" : ObjectId("6059bab1c1e8aa1fee67d268"), "Fname" : "Sneha", "Lname" : "SH", "age" : 34, "email" : "sneha@gmail.com", "phone" : 9688766891, "experience" : 3 }
+> db.Empdetails.find().pretty()
+{
+	"_id" : ObjectId("6059b8f5c1e8aa1fee67d25f"),
+	"Fname" : "Rohan",
+	"Lname" : "Sharma",
+	"age" : 26,
+	"email" : "rohan@gmail.com",
+	"phone" : 9008070890,
+	"experience" : 5
+}
+{
+	"_id" : ObjectId("6059b950c1e8aa1fee67d260"),
+	"Fname" : "Adarsh",
+	"Lname" : "Hegde",
+	"age" : 20,
+	"email" : "adarsh@gmail.com",
+	"phone" : 9008070891,
+	"experience" : 1
+}
+{
+	"_id" : ObjectId("6059b975c1e8aa1fee67d261"),
+	"Fname" : "Akash",
+	"Lname" : "NS",
+	"age" : 20,
+	"email" : "akash@gmail.com",
+	"phone" : 9308070891,
+	"experience" : 2
+}
+{
+	"_id" : ObjectId("6059b9a1c1e8aa1fee67d262"),
+	"Fname" : "Aditya",
+	"Lname" : "Kumar",
+	"age" : 21,
+	"email" : "aditya@gmail.com",
+	"phone" : 9308050891,
+	"experience" : 3
+}
+{
+	"_id" : ObjectId("6059b9c4c1e8aa1fee67d263"),
+	"Fname" : "Abhay",
+	"Lname" : "Yelameli",
+	"age" : 21,
+	"email" : "abhay@gmail.com",
+	"phone" : 9308056891,
+	"experience" : 4
+}
+{
+	"_id" : ObjectId("6059b9fac1e8aa1fee67d264"),
+	"Fname" : "Mohan",
+	"Lname" : "SS",
+	"age" : 27,
+	"email" : "mohan@gmail.com",
+	"phone" : 9608056891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059ba26c1e8aa1fee67d265"),
+	"Fname" : "Aayesha",
+	"Lname" : "Nomani",
+	"age" : 29,
+	"email" : "aayesha@gmail.com",
+	"phone" : 9608066891,
+	"experience" : 7
+}
+{
+	"_id" : ObjectId("6059ba52c1e8aa1fee67d266"),
+	"Fname" : "Abhinav",
+	"Lname" : "Prakash",
+	"age" : 23,
+	"email" : "milit@gmail.com",
+	"phone" : 9608766891,
+	"experience" : 8
+}
+{
+	"_id" : ObjectId("6059ba87c1e8aa1fee67d267"),
+	"Fname" : "Ashwini",
+	"Lname" : "Hegde",
+	"age" : 33,
+	"email" : "hegde@gmail.com",
+	"phone" : 9688766891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059bab1c1e8aa1fee67d268"),
+	"Fname" : "Sneha",
+	"Lname" : "SH",
+	"age" : 34,
+	"email" : "sneha@gmail.com",
+	"phone" : 9688766891,
+	"experience" : 3
+}
+> db.createCollection("test")
+{ "ok" : 1 }
+> db.test.insertMany([{id:1,name:"Adarsh"},{id:2,name:"Alok"},{id:3,name:"Ajay"},{id:4,name:"Anjali"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6059bbf4c1e8aa1fee67d269"),
+		ObjectId("6059bbf4c1e8aa1fee67d26a"),
+		ObjectId("6059bbf4c1e8aa1fee67d26b"),
+		ObjectId("6059bbf4c1e8aa1fee67d26c")
+	]
+}
+> db.test.find()
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d269"), "id" : 1, "name" : "Adarsh" }
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d26a"), "id" : 2, "name" : "Alok" }
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d26b"), "id" : 3, "name" : "Ajay" }
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d26c"), "id" : 4, "name" : "Anjali" }
+> db.test.find().pretty()
+{
+	"_id" : ObjectId("6059bbf4c1e8aa1fee67d269"),
+	"id" : 1,
+	"name" : "Adarsh"
+}
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d26a"), "id" : 2, "name" : "Alok" }
+{ "_id" : ObjectId("6059bbf4c1e8aa1fee67d26b"), "id" : 3, "name" : "Ajay" }
+{
+	"_id" : ObjectId("6059bbf4c1e8aa1fee67d26c"),
+	"id" : 4,
+	"name" : "Anjali"
+}
+> db.test.drop()
+true
+> ^C
+bye
+ db.Empdetails.save({fname:"Rachel",lname:"Smith",age:25,email:"Rachel@gmail.com",phone:9481113463,experience:5})
+WriteResult({ "nInserted" : 1 })
+> db.Empdetails.save({_id:1,fname:"Rachel",lname:"Smith",age:25,email:"Rachel@gmail.com",phone:9481113463,experience:5})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 1 })
+> db.Empdetails.find({fname="Rachel"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:25
+> db.Empdetails.find({fname:"Rachel"})
+{ "_id" : ObjectId("6059c2081a8e42ea7739c438"), "fname" : "Rachel", "lname" : "Smith", "age" : 25, "email" : "Rachel@gmail.com", "phone" : 9481113463, "experience" : 5 }
+{ "_id" : 1, "fname" : "Rachel", "lname" : "Smith", "age" : 25, "email" : "Rachel@gmail.com", "phone" : 9481113463, "experience" : 5 }
+> db.Empdetails.deleteOne({_id:1})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.Empdetails.find({lname:"Smith",experience:5})
+{ "_id" : ObjectId("6059c2081a8e42ea7739c438"), "fname" : "Rachel", "lname" : "Smith", "age" : 25, "email" : "Rachel@gmail.com", "phone" : 9481113463, "experience" : 5 }
+> db.Empdetails.find({$or: [{experience:5},{experience:6}]}).pretty()
+{
+	"_id" : ObjectId("6059b8f5c1e8aa1fee67d25f"),
+	"Fname" : "Rohan",
+	"Lname" : "Sharma",
+	"age" : 26,
+	"email" : "rohan@gmail.com",
+	"phone" : 9008070890,
+	"experience" : 5
+}
+{
+	"_id" : ObjectId("6059b9fac1e8aa1fee67d264"),
+	"Fname" : "Mohan",
+	"Lname" : "SS",
+	"age" : 27,
+	"email" : "mohan@gmail.com",
+	"phone" : 9608056891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059ba87c1e8aa1fee67d267"),
+	"Fname" : "Ashwini",
+	"Lname" : "Hegde",
+	"age" : 33,
+	"email" : "hegde@gmail.com",
+	"phone" : 9688766891,
+	"experience" : 6
+}
+{
+	"_id" : ObjectId("6059c2081a8e42ea7739c438"),
+	"fname" : "Rachel",
+	"lname" : "Smith",
+	"age" : 25,
+	"email" : "Rachel@gmail.com",
+	"phone" : 9481113463,
+	"experience" : 5
+}
+
