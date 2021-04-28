@@ -1,0 +1,297 @@
+IMPORT csv FILE
+
+
+adarsh@adarsh:~$ mongoimport --type csv -d iris -c flow --headerline --drop /home/adarsh/Downloads/annual-enterprise-survey-2019-financial-year-provisional-csv.csv
+2021-04-20T15:21:04.997+0530	connected to: localhost
+2021-04-20T15:21:05.001+0530	dropping: iris.flow
+2021-04-20T15:21:07.828+0530	[####################....] iris.flow	4.09MB/4.90MB (83.4%)
+2021-04-20T15:21:08.405+0530	[########################] iris.flow	4.90MB/4.90MB (100.0%)
+2021-04-20T15:21:08.405+0530	imported 32445 documents
+adarsh@adarsh:~$ mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings: 
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] 
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] 
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] 
+> show dbs
+Cust    0.000GB
+admin   0.000GB
+config  0.000GB
+iris    0.002GB
+local   0.000GB
+> use iris
+switched to db iris
+> show collections
+flow
+> db.flow.find()
+{ "_id" : ObjectId("607ea40933298183e1aa27e7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H01", "Variable_name" : "Total income", "Variable_category" : "Financial performance", "Value" : "728,239", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H04", "Variable_name" : "Sales, government funding, grants and subsidies", "Variable_category" : "Financial performance", "Value" : "643,809", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e9"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H05", "Variable_name" : "Interest, dividends and donations", "Variable_category" : "Financial performance", "Value" : "62,924", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ea"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H07", "Variable_name" : "Non-operating income", "Variable_category" : "Financial performance", "Value" : "21,505", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27eb"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H08", "Variable_name" : "Total expenditure", "Variable_category" : "Financial performance", "Value" : "634,710", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ec"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H09", "Variable_name" : "Interest and donations", "Variable_category" : "Financial performance", "Value" : "35,250", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ed"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H10", "Variable_name" : "Indirect taxes", "Variable_category" : "Financial performance", "Value" : "7,458", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ee"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H11", "Variable_name" : "Depreciation", "Variable_category" : "Financial performance", "Value" : "20,977", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ef"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H12", "Variable_name" : "Salaries and wages paid", "Variable_category" : "Financial performance", "Value" : "112,960", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f0"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H13", "Variable_name" : "Redundancy and severance", "Variable_category" : "Financial performance", "Value" : 206, "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f1"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H14", "Variable_name" : "Salaries and wages to self employed commission agents", "Variable_category" : "Financial performance", "Value" : "1,767", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f2"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H19", "Variable_name" : "Purchases and other operating expenses", "Variable_category" : "Financial performance", "Value" : "445,481", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f3"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H20", "Variable_name" : "Non-operating expenses", "Variable_category" : "Financial performance", "Value" : "10,817", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f4"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H21", "Variable_name" : "Opening stocks", "Variable_category" : "Financial performance", "Value" : "63,932", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f5"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H22", "Variable_name" : "Closing stocks", "Variable_category" : "Financial performance", "Value" : "67,518", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f6"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H23", "Variable_name" : "Surplus before income tax", "Variable_category" : "Financial performance", "Value" : "97,114", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H24", "Variable_name" : "Total assets", "Variable_category" : "Financial position", "Value" : "2,216,127", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H25", "Variable_name" : "Current assets", "Variable_category" : "Financial position", "Value" : "612,930", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f9"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H26", "Variable_name" : "Fixed tangible assets", "Variable_category" : "Financial position", "Value" : "535,710", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27fa"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H29", "Variable_name" : "Other assets", "Variable_category" : "Financial position", "Value" : "1,067,488", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+Type "it" for more
+> db.flow.count()
+32445
+
+EXPORT csv INTO json
+
+
+adarsh@adarsh:~$ mongoexport --collection=flow --db=iris --out=/home/adarsh/Downloads/iris1.json
+2021-04-20T15:29:24.101+0530	connected to: localhost
+2021-04-20T15:29:25.022+0530	[........................]  iris.flow  0/32445  (0.0%)
+2021-04-20T15:29:26.022+0530	[#####...................]  iris.flow  8000/32445  (24.7%)
+2021-04-20T15:29:27.022+0530	[#################.......]  iris.flow  24000/32445  (74.0%)
+2021-04-20T15:29:27.897+0530	[########################]  iris.flow  32445/32445  (100.0%)
+2021-04-20T15:29:27.897+0530	exported 32445 records
+
+IMPORT json FILE
+
+
+adarsh@adarsh:~$ mongoimport --db iris1 --collection flow --file /home/adarsh/Downloads/iris1.json
+2021-04-20T15:36:10.363+0530	connected to: localhost
+2021-04-20T15:36:12.542+0530	imported 32445 documents
+adarsh@adarsh:~$ mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings: 
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] 
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-06T16:56:59.479+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] 
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-06T16:57:03.768+0530 I CONTROL  [initandlisten] 
+> show dbs
+Cust    0.000GB
+admin   0.000GB
+config  0.000GB
+iris    0.002GB
+iris1   0.002GB
+local   0.000GB
+> show collections
+> use iris1
+switched to db iris1
+> show collections
+flow
+> db.flow.count()
+32445
+
+
+EXPORT json INTO csv
+
+
+adarsh@adarsh:~$ mongoexport --collection=flow --db=iris1 --out=/home/adarsh/Downloads/iris2.csv
+2021-04-20T15:39:43.888+0530	connected to: localhost
+2021-04-20T15:39:44.884+0530	[........................]  iris1.flow  0/32445  (0.0%)
+2021-04-20T15:39:45.884+0530	[###########.............]  iris1.flow  16000/32445  (49.3%)
+2021-04-20T15:39:46.884+0530	[#################.......]  iris1.flow  24000/32445  (74.0%)
+2021-04-20T15:39:47.411+0530	[########################]  iris1.flow  32445/32445  (100.0%)
+2021-04-20T15:39:47.411+0530	exported 32445 records
+
+> show dbs
+Cust    0.000GB
+admin   0.000GB
+config  0.000GB
+iris    0.002GB
+iris1   0.002GB
+local   0.000GB
+> use Cust
+switched to db Cust
+> show collections
+customer
+orderr_det
+> db.customer.find()
+{ "_id" : ObjectId("606bebec2d7a7bf877fc6ecd"), "cust_id" : "A123", "amt" : 500, "status" : "A" }
+{ "_id" : ObjectId("606bebfd2d7a7bf877fc6ece"), "cust_id" : "A123", "amt" : 250, "status" : "A" }
+{ "_id" : ObjectId("606bec122d7a7bf877fc6ecf"), "cust_id" : "B212", "amt" : 200, "status" : "A" }
+{ "_id" : ObjectId("606bec282d7a7bf877fc6ed0"), "cust_id" : "A122", "amt" : 300, "status" : "D" }
+
+
+EXIST OPERATOR
+
+> db.flow.find({"Value":{$exists:true}})
+{ "_id" : ObjectId("607ea40933298183e1aa27e7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H01", "Variable_name" : "Total income", "Variable_category" : "Financial performance", "Value" : "728,239", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H04", "Variable_name" : "Sales, government funding, grants and subsidies", "Variable_category" : "Financial performance", "Value" : "643,809", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e9"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H05", "Variable_name" : "Interest, dividends and donations", "Variable_category" : "Financial performance", "Value" : "62,924", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ea"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H07", "Variable_name" : "Non-operating income", "Variable_category" : "Financial performance", "Value" : "21,505", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27eb"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H08", "Variable_name" : "Total expenditure", "Variable_category" : "Financial performance", "Value" : "634,710", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ec"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H09", "Variable_name" : "Interest and donations", "Variable_category" : "Financial performance", "Value" : "35,250", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+
+
+
+TYPE OPERATOR
+
+> db.flow.find({"Value":{$type:1}})
+{ "_id" : ObjectId("6089944fcc35cd8b8563415c"), "year" : 2020, "Industry_agrregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 9999, "Industry_name_NZSIOC" : "All industries", "units" : "Dollars(millions)", "Variable_code" : "H11", "Variable_name" : "closing stocks", "Variable_category" : "Finance", "Value" : 50000, "Industry_code_ANZSIC06" : "ANZSIC06 divisions a-s" }
+> db.flow.find({"Value":{$type:2}})
+{ "_id" : ObjectId("607ea40933298183e1aa27e7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H01", "Variable_name" : "Total income", "Variable_category" : "Financial performance", "Value" : "728,239", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H04", "Variable_name" : "Sales, government funding, grants and subsidies", "Variable_category" : "Financial performance", "Value" : "643,809", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+
+
+REGULAR EXPRESSIONS
+
+> db.flow.find({"Variable_code":{$regex:"H"}})
+{ "_id" : ObjectId("607ea40933298183e1aa27e7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H01", "Variable_name" : "Total income", "Variable_category" : "Financial performance", "Value" : "728,239", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H04", "Variable_name" : "Sales, government funding, grants and subsidies", "Variable_category" : "Financial performance", "Value" : "643,809", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+
+
+CRUD OPERATIONS
+
+> use iris
+switched to db iris
+> db.flow.insert({year:2020,Industry_agrregation_NZSIOC:"Level 1",Industry_code_NZSIOC:9999,Industry_name_NZSIOC:"All industries",units:"Dollars(millions)",Variable_code:"H10",Variable_name:"Opening stocks",Variable_category:"Finance",Value:"50000",Industry_code_ANZSIC06:"ANZSIC06 divisions a-s"})
+WriteResult({ "nInserted" : 1 })
+> db.flow.insert({year:2020,Industry_agrregation_NZSIOC:"Level 1",Industry_code_NZSIOC:9999,Industry_name_NZSIOC:"All industries",units:"Dollars(millions)",Variable_code:"H11",Variable_name:"closing stocks",Variable_category:"Finance",Value:"55000",Industry_code_ANZSIC06:"ANZSIC06 divisions a-s"})
+WriteResult({ "nInserted" : 1 })
+> db.flow.insert({year:2020,Industry_agrregation_NZSIOC:"Level 1",Industry_code_NZSIOC:9999,Industry_name_NZSIOC:"All industries",units:"Dollars(millions)",Variable_code:"H11",Variable_name:"closing stocks",Variable_category:"Finance",Value:50000,Industry_code_ANZSIC06:"ANZSIC06 divisions a-s"})
+WriteResult({ "nInserted" : 1 })
+> db.flow.find({value:"50000"})
+> db.flow.find({Value:50000})
+{ "_id" : ObjectId("60866a1ecc35cd8b8563415b"), "year" : 2020, "Industry_agrregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 9999, "Industry_name_NZSIOC" : "All industries", "units" : "Dollars(millions)", "Variable_code" : "H11", "Variable_name" : "closing stocks", "Variable_category" : "Finance", "Value" : 50000, "Industry_code_ANZSIC06" : "ANZSIC06 divisions a-s" }
+
+> db.flow.find().pretty()
+{
+	"_id" : ObjectId("607ea40933298183e1aa27e7"),
+	"Year" : 2019,
+	"Industry_aggregation_NZSIOC" : "Level 1",
+	"Industry_code_NZSIOC" : 99999,
+	"Industry_name_NZSIOC" : "All industries",
+	"Units" : "Dollars (millions)",
+	"Variable_code" : "H01",
+	"Variable_name" : "Total income",
+	"Variable_category" : "Financial performance",
+	"Value" : "728,239",
+	"Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)"
+}
+{
+	"_id" : ObjectId("607ea40933298183e1aa27e8"),
+	"Year" : 2019,
+	"Industry_aggregation_NZSIOC" : "Level 1",
+	"Industry_code_NZSIOC" : 99999,
+	"Industry_name_NZSIOC" : "All industries",
+	"Units" : "Dollars (millions)",
+	"Variable_code" : "H04",
+	"Variable_name" : "Sales, government funding, grants and subsidies",
+	"Variable_category" : "Financial performance",
+	"Value" : "643,809",
+	"Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)"
+}
+{
+	"_id" : ObjectId("607ea40933298183e1aa27e9"),
+	"Year" : 2019,
+	"Industry_aggregation_NZSIOC" : "Level 1",
+	"Industry_code_NZSIOC" : 99999,
+	"Industry_name_NZSIOC" : "All industries",
+	"Units" : "Dollars (millions)",
+	"Variable_code" : "H05",
+	"Variable_name" : "Interest, dividends and donations",
+	"Variable_category" : "Financial performance",
+	"Value" : "62,924",
+	"Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)"
+}
+{
+	"_id" : ObjectId("607ea40933298183e1aa27ea"),
+	"Year" : 2019,
+	"Industry_aggregation_NZSIOC" : "Level 1",
+	"Industry_code_NZSIOC" : 99999,
+	"Industry_name_NZSIOC" : "All industries",
+	"Units" : "Dollars (millions)",
+	"Variable_code" : "H07",
+	"Variable_name" : "Non-operating income",
+	"Variable_category" : "Financial performance",
+	"Value" : "21,505",
+	"Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)"
+}
+> db.flow.remove({Value:50000})
+WriteResult({ "nRemoved" : 1 })
+
+
+LOGICAL OPERATOR
+
+> db.flow.find({$and:[{year:2020},{Value:"50000"}]})
+{ "_id" : ObjectId("608669ddcc35cd8b85634159"), "year" : 2020, "Industry_agrregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 9999, "Industry_name_NZSIOC" : "All industries", "units" : "Dollars(millions)", "Variable_code" : "H10", "Variable_name" : "Opening stocks", "Variable_category" : "Finance", "Value" : "50000", "Industry_code_ANZSIC06" : "ANZSIC06 divisions a-s" }
+
+
+AGGREGATE OPERATORS AND ACCUMALATORS
+
+
+> db.flow.aggregate([{$match:{Variable_code:"H11"}}])
+{ "_id" : ObjectId("607ea40933298183e1aa27ee"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H11", "Variable_name" : "Depreciation", "Variable_category" : "Financial performance", "Value" : "20,977", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa280e"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : "AA", "Industry_name_NZSIOC" : "Agriculture, Forestry and Fishing", "Units" : "Dollars (millions)", "Variable_code" : "H11", "Variable_name" : "Depreciation", "Variable_category" : "Financial performance", "Value" : "2,080", "Industry_code_ANZSIC06" : "ANZSIC06 division A" }
+
+> db.flow.aggregate([{$match:{Variable_code:"H11"}},{$group:{_id:"$Value"}},{$sort:{Year:-1}}])
+{ "_id" : 50000 }
+{ "_id" : "55000" }
+{ "_id" : 532 }
+{ "_id" : 131 }
+{ "_id" : 804 }
+{ "_id" : 780 }
+{ "_id" : 722 }
+{ "_id" : 1560 }
+{ "_id" : 91 }
+{ "_id" : 463 }
+{ "_id" : 605 }
+{ "_id" : 1244 }
+{ "_id" : 282 }
+{ "_id" : 415 }
+{ "_id" : 151 }
+
+> db.flow.count()
+32448
+
+
+> db.flow.aggregate([{$limit:10}])
+{ "_id" : ObjectId("607ea40933298183e1aa27e7"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H01", "Variable_name" : "Total income", "Variable_category" : "Financial performance", "Value" : "728,239", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e8"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H04", "Variable_name" : "Sales, government funding, grants and subsidies", "Variable_category" : "Financial performance", "Value" : "643,809", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27e9"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H05", "Variable_name" : "Interest, dividends and donations", "Variable_category" : "Financial performance", "Value" : "62,924", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ea"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H07", "Variable_name" : "Non-operating income", "Variable_category" : "Financial performance", "Value" : "21,505", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27eb"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H08", "Variable_name" : "Total expenditure", "Variable_category" : "Financial performance", "Value" : "634,710", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ec"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H09", "Variable_name" : "Interest and donations", "Variable_category" : "Financial performance", "Value" : "35,250", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ed"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H10", "Variable_name" : "Indirect taxes", "Variable_category" : "Financial performance", "Value" : "7,458", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ee"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H11", "Variable_name" : "Depreciation", "Variable_category" : "Financial performance", "Value" : "20,977", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27ef"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H12", "Variable_name" : "Salaries and wages paid", "Variable_category" : "Financial performance", "Value" : "112,960", "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+{ "_id" : ObjectId("607ea40933298183e1aa27f0"), "Year" : 2019, "Industry_aggregation_NZSIOC" : "Level 1", "Industry_code_NZSIOC" : 99999, "Industry_name_NZSIOC" : "All industries", "Units" : "Dollars (millions)", "Variable_code" : "H13", "Variable_name" : "Redundancy and severance", "Variable_category" : "Financial performance", "Value" : 206, "Industry_code_ANZSIC06" : "ANZSIC06 divisions A-S (excluding classes K6330, L6711, O7552, O760, O771, O772, S9540, S9601, S9602, and S9603)" }
+
+
+> db.flow.aggregate([{$group:{_id:"$Year","maxval":{$max:"$Year"}}}])
+{ "_id" : null, "maxval" : null }
+{ "_id" : 2014, "maxval" : 2014 }
+{ "_id" : 2015, "maxval" : 2015 }
+{ "_id" : 2013, "maxval" : 2013 }
+{ "_id" : 2019, "maxval" : 2019 }
+{ "_id" : 2018, "maxval" : 2018 }
+{ "_id" : 2017, "maxval" : 2017 }
+{ "_id" : 2016, "maxval" : 2016 }
+> db.flow.aggregate([{$group:{_id:"$Year","maxval":{$sum:"$Year"}}}])
+{ "_id" : null, "maxval" : 0 }
+{ "_id" : 2014, "maxval" : 9334890 }
+{ "_id" : 2015, "maxval" : 9339525 }
+{ "_id" : 2013, "maxval" : 9330255 }
+{ "_id" : 2019, "maxval" : 9358065 }
+{ "_id" : 2018, "maxval" : 9353430 }
+{ "_id" : 2017, "maxval" : 9348795 }
+{ "_id" : 2016, "maxval" : 9344160 }
+
+
