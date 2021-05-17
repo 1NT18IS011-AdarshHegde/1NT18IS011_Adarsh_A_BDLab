@@ -1,0 +1,114 @@
+hdoop@ubuntu:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [ubuntu]
+Starting resourcemanager
+Starting nodemanagers
+hdoop@ubuntu:~$ jps
+7696 DataNode
+8374 NodeManager
+8551 Jps
+7911 SecondaryNameNode
+8215 ResourceManager
+7527 NameNode
+hdoop@ubuntu:~$ hadoop fs -ls
+Found 5 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 07:25 adarsh
+-rw-r--r--   1 hdoop supergroup          0 2021-05-11 07:28 empty.txt
+-rw-r--r--   1 hdoop supergroup         23 2021-05-11 08:39 new.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:33 prog1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:24 prog2
+hdoop@ubuntu:~$ hadoop fs -mkdir AdarshHegde/
+hdoop@ubuntu:~$ hadoop fs -ls
+Found 6 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:17 AdarshHegde
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 07:25 adarsh
+-rw-r--r--   1 hdoop supergroup          0 2021-05-11 07:28 empty.txt
+-rw-r--r--   1 hdoop supergroup         23 2021-05-11 08:39 new.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:33 prog1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:24 prog2
+hdoop@ubuntu:~$ hadoop fs -touchz AdarshHegde/emp1.txt
+hdoop@ubuntu:~$ hadoop fs -touchz AdarshHegde/emp2.txt
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:18 AdarshHegde/emp1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:19 AdarshHegde/emp2.txt
+hdoop@ubuntu:~$ hadoop fs -mkdir 1NT18IS011
+hdoop@ubuntu:~$ hadoop fs -ls 
+Found 7 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:22 1NT18IS011
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:19 AdarshHegde
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 07:25 adarsh
+-rw-r--r--   1 hdoop supergroup          0 2021-05-11 07:28 empty.txt
+-rw-r--r--   1 hdoop supergroup         23 2021-05-11 08:39 new.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:33 prog1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-11 08:24 prog2
+hdoop@ubuntu:~$ hadoop fs -cp 1NT18IS011 AdarshHegde/
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde
+Found 3 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:25 AdarshHegde/1NT18IS011
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:18 AdarshHegde/emp1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:19 AdarshHegde/emp2.txt
+hdoop@ubuntu:~$ gedit Adarsh_1NT18IS011.txt
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde/1NT18IS011/
+Found 2 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:25 AdarshHegde/1NT18IS011/AdarshHegde
+-rw-r--r--   1 hdoop supergroup         43 2021-05-17 07:30 AdarshHegde/1NT18IS011/Adarsh_1NT18IS011.txt
+ hdoop@ubuntu:~$ hadoop fs -copyToLocal AdarshHegde/emp1.txt
+hdoop@ubuntu:~$ ls
+ Adarsh_1NT18IS011.txt   f2.txt                        hs_err_pid5815.log
+ apache-hive-3.1.2-bin   hadoop-3.2.1                  hs_err_pid5923.log
+ Desktop                'hadoop Useful Commands.txt'   Music
+ dfsdata                 HdoopFiles                    Pictures
+ Documents               hs_err_pid21913.log           prog1
+ Downloads               hs_err_pid29299.log           Public
+ eclipse-workspace       hs_err_pid29507.log           snap
+ emp1.txt                hs_err_pid32715.log           Templates
+ examples.desktop        hs_err_pid3975.log            tmpdata
+ f1.txt                  hs_err_pid5692.log            Videos
+hdoop@ubuntu:~$ hadoop fs -moveFromLocal f1.txt AdarshHegde
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde/
+Found 4 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:30 AdarshHegde/1NT18IS011
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:18 AdarshHegde/emp1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:19 AdarshHegde/emp2.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:34 AdarshHegde/f1.txt
+hdoop@ubuntu:~$ hadoop fs -cp AdarshHegde/f1.txt AdarshHegde/1NT18IS011/f1.txt
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde/1NT18IS011
+Found 3 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:25 AdarshHegde/1NT18IS011/AdarshHegde
+-rw-r--r--   1 hdoop supergroup         43 2021-05-17 07:30 AdarshHegde/1NT18IS011/Adarsh_1NT18IS011.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:37 AdarshHegde/1NT18IS011/f1.txt
+hdoop@ubuntu:~$ hadoop fs -mv empty.txt AdarshHegde/1NT18IS011/
+hdoop@ubuntu:~$ hadoop fs -ls AdarshHegde/1NT18IS011
+Found 4 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 07:25 AdarshHegde/1NT18IS011/AdarshHegde
+-rw-r--r--   1 hdoop supergroup         43 2021-05-17 07:30 AdarshHegde/1NT18IS011/Adarsh_1NT18IS011.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-11 07:28 AdarshHegde/1NT18IS011/empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 07:37 AdarshHegde/1NT18IS011/f1.txt
+hdoop@ubuntu:~$ hadoop fs -du AdarshHegde/
+43  43  AdarshHegde/1NT18IS011
+0   0   AdarshHegde/emp1.txt
+0   0   AdarshHegde/emp2.txt
+0   0   AdarshHegde/f1.txt
+hdoop@ubuntu:~$ hadoop fs -du -s AdarshHegde/
+43  43  AdarshHegde
+hdoop@ubuntu:~$ hadoop fs -du AdarshHegde/1NT18IS011/
+0   0   AdarshHegde/1NT18IS011/AdarshHegde
+43  43  AdarshHegde/1NT18IS011/Adarsh_1NT18IS011.txt
+0   0   AdarshHegde/1NT18IS011/empty.txt
+0   0   AdarshHegde/1NT18IS011/f1.txt
+hdoop@ubuntu:~$ hadoop fs -stat AdarshHegde/
+2021-05-17 14:34:28
+hdoop@ubuntu:~$ hadoop fs -stat AdarshHegde/1NT18IS011/
+2021-05-17 14:39:21
+hdoop@ubuntu:~$ hadoop fs -cat AdarshHegde/1NT18IS011/Adarsh_1NT18IS011.txt
+Syntax to list ls command is hadoop fs -ls
+
+
+ 
+
+
