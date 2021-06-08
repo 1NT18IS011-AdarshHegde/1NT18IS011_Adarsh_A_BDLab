@@ -1,0 +1,9 @@
+Output of Banking Transaction 2 :
+
+hdoop@ubuntu:~$ hadoop fs -cat banking2.txt/part-00000
+2021-06-08 10:38:59,653 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Disha	12000
+Mahesh	8000
+Prashanth	15000
+Ramya	14000
+
