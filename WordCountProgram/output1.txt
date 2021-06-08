@@ -1,0 +1,22 @@
+Output of wordcount program :
+
+hdoop@ubuntu:~$ hadoop fs -ls output1.txt
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-18 09:57 output1.txt/_SUCCESS
+-rw-r--r--   1 hdoop supergroup        101 2021-05-18 09:57 output1.txt/part-r-00000
+hdoop@ubuntu:~$ hadoop fs -cat output1.txt/part-r-00000
+2021-06-08 10:34:24,222 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Abhay	2
+Adarsh	2
+Dog	2
+a	2
+cat	2
+hadoop	2
+hdfs	1
+is	2
+mapreduce	1
+of	2
+processing	1
+storage	1
+unit	2
+

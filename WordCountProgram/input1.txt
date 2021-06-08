@@ -1,0 +1,4 @@
+Dog cat Dog cat
+Abhay Adarsh Adarsh Abhay
+hdfs is a storage unit of hadoop
+mapreduce is a processing unit of hadoop
