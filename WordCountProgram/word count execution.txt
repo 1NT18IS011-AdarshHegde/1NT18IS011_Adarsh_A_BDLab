@@ -1,23 +1,23 @@
-hdoop@ubuntu-Aspire-E5-571P:~$ cd /home/hdoop/eclipse-workspace1
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ gedit input.txt
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ cd ..
-hdoop@ubuntu-Aspire-E5-571P:~$ ls
+hdoop@ubuntu:~$ cd /home/hdoop/eclipse-workspace1
+hdoop@ubuntu:~/eclipse-workspace1$ gedit input.txt
+hdoop@ubuntu:~/eclipse-workspace1$ cd ..
+hdoop@ubuntu:~$ ls
 Desktop    eclipse             examples.desktop     Music     snap       Videos
 Documents  eclipse-workspace   hadoop-3.2.1         Pictures  Templates
 Downloads  eclipse-workspace1  hadoop-3.2.1.tar.gz  Public    tmpdata
-hdoop@ubuntu-Aspire-E5-571P:~$ cd /home/hdoop/eclipse-workspace1/
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -put input.txt
+hdoop@ubuntu:~$ cd /home/hdoop/eclipse-workspace1/
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -put input.txt
 2021-05-03 13:09:21,302 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -cat input.txt
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -cat input.txt
 2021-05-03 13:10:11,949 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
 Dog cat Dog cat
 Abhay Adarsh Adarsh Abhay
 hdfs is a storage unit of hadoop
 mapreduce is a processing unit of hadoop
 
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ ls
+hdoop@ubuntu:~/eclipse-workspace1$ ls
 Hadoop_Programs  input.txt  wordcount.jar
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop jar wordcount.jar WordCount input.txt output 
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop jar wordcount.jar WordCount input.txt output1.txt 
 2021-05-03 13:12:17,887 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
 2021-05-03 13:12:18,817 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
 2021-05-03 13:12:18,872 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1620025028505_0001
@@ -32,7 +32,7 @@ hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop jar wordcount.jar WordC
 2021-05-03 13:12:20,415 INFO conf.Configuration: resource-types.xml not found
 2021-05-03 13:12:20,416 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
 2021-05-03 13:12:20,957 INFO impl.YarnClientImpl: Submitted application application_1620025028505_0001
-2021-05-03 13:12:21,055 INFO mapreduce.Job: The url to track the job: http://ubuntu-Aspire-E5-571P:8088/proxy/application_1620025028505_0001/
+2021-05-03 13:12:21,055 INFO mapreduce.Job: The url to track the job: http://ubuntu:8088/proxy/application_1620025028505_0001/
 2021-05-03 13:12:21,056 INFO mapreduce.Job: Running job: job_1620025028505_0001
 2021-05-03 13:12:33,367 INFO mapreduce.Job: Job job_1620025028505_0001 running in uber mode : false
 2021-05-03 13:12:33,370 INFO mapreduce.Job:  map 0% reduce 0%
@@ -100,17 +100,17 @@ hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop jar wordcount.jar WordC
 		Bytes Read=46
 	File Output Format Counters 
 		Bytes Written=28
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -ls
 Found 4 items
-drwxr-xr-x   - hdoop supergroup          0 2021-04-26 14:55 ubuntuSkiran
+drwxr-xr-x   - hdoop supergroup          0 2021-04-26 14:55 adarshhegde
 -rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
-drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output1.txt
 -rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls output/
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -ls output/
 Found 2 items
--rw-r--r--   1 hdoop supergroup          0 2021-05-03 13:12 output/_SUCCESS
--rw-r--r--   1 hdoop supergroup         28 2021-05-03 13:12 output/part-r-00000
-hdoop@ubuntu-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -cat output/part-r-00000
+-rw-r--r--   1 hdoop supergroup          0 2021-05-03 13:12 output1.txt/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         28 2021-05-03 13:12 output1.txt/part-r-00000
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -cat output/part-r-00000
 2021-05-03 13:16:00,274 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
 Abhay	2
 Adarsh	2
