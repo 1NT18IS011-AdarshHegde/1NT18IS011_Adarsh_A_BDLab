@@ -1,0 +1,237 @@
+hdoop@ubuntu:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [ubuntu]
+Starting resourcemanager
+Starting nodemanagers
+hdoop@ubuntu:~$ jps
+8688 NodeManager
+7810 NameNode
+8516 ResourceManager
+7973 DataNode
+8197 SecondaryNameNode
+9079 Jps
+
+hdoop@ubuntu:~$ hadoop fs -ls
+Found 15 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:52 adarshhegde
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:37 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:38 empty1.txt
+-rw-r--r--   1 hdoop supergroup          3 2021-05-07 00:07 f2.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:39 input1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:05 new.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:04 new1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:08 new3.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:44 output1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:56 output3
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:59 prog2
+-rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:54 word
+hdoop@ubuntu:~$ cd eclipse-workspace1
+hdoop@ubuntu:~/eclipse-workspace1$ ls
+Banking   Banking2         input1.txt  sales_withoutHeader.csv  wordcount.jar
+Banking1  Hadoop_Programs  input.txt   wordcount1.jar
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -copyFromLocal sales_withoutHeader.csv 
+2021-05-17 12:59:11,782 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@ubuntu:~/eclipse-workspace1$ hadoop fs -ls
+Found 16 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:52 ubuntuSkiran
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:37 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:38 empty1.txt
+-rw-r--r--   1 hdoop supergroup          3 2021-05-07 00:07 f2.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:39 input1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:05 new.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:04 new1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:08 new3.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:44 output1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:56 output3
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:59 prog2
+-rw-r--r--   1 hdoop supergroup        139 2021-05-17 12:59 sales_withoutHeader.csv
+-rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:54 word
+hdoop@ubuntu:~/eclipse-workspace1$ cd
+hdoop@ubuntu:~$ cd Desktop
+hdoop@ubuntu:~/Desktop$ ls
+Banking1.jar
+hdoop@ubuntu:~/Desktop$ hadoop -jar Banking1.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv banking1.txt
+/home/hdoop/hadoop-3.2.1/libexec/hadoop-functions.sh: line 2366: HADOOP_-JAR_USER: bad substitution
+ERROR: -jar is not COMMAND nor fully qualified CLASSNAME.
+Usage: hadoop [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
+ or    hadoop [OPTIONS] CLASSNAME [CLASSNAME OPTIONS]
+  where CLASSNAME is a user-provided Java class
+
+  OPTIONS is none or any of:
+
+buildpaths                       attempt to add class files from build tree
+--config dir                     Hadoop config directory
+--debug                          turn on shell script debug mode
+--help                           usage information
+hostnames list[,of,host,names]   hosts to use in slave mode
+hosts filename                   list of hosts to use in slave mode
+loglevel level                   set the log4j level for this command
+workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+daemonlog     get/set the log level for each daemon
+
+    Client Commands:
+
+archive       create a Hadoop archive
+checknative   check native Hadoop and compression libraries availability
+classpath     prints the class path needed to get the Hadoop jar and the
+              required libraries
+conftest      validate configuration XML files
+credential    interact with credential providers
+distch        distributed metadata changer
+distcp        copy file or directories recursively
+dtutil        operations related to delegation tokens
+envvars       display computed Hadoop environment variables
+fs            run a generic filesystem user client
+gridmix       submit a mix of synthetic job, modeling a profiled from
+              production load
+jar <jar>     run a jar file. NOTE: please use "yarn jar" to launch YARN
+              applications, not this command.
+jnipath       prints the java.library.path
+kdiag         Diagnose Kerberos Problems
+kerbname      show auth_to_local principal conversion
+key           manage keys via the KeyProvider
+rumenfolder   scale a rumen input trace
+rumentrace    convert logs into a rumen trace
+s3guard       manage metadata on S3
+trace         view and modify Hadoop tracing settings
+version       print the version
+
+    Daemon Commands:
+
+kms           run KMS, the Key Management Server
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.
+hdoop@ubuntu:~/Desktop$ hadoop jar Banking1.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv output4
+2021-05-17 13:02:24,926 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-05-17 13:02:25,458 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-05-17 13:02:26,012 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-05-17 13:02:26,069 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1621234204010_0001
+2021-05-17 13:02:26,249 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-17 13:02:26,506 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-05-17 13:02:26,690 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-17 13:02:26,757 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-17 13:02:26,777 INFO mapreduce.JobSubmitter: number of splits:2
+2021-05-17 13:02:27,399 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-17 13:02:27,832 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1621234204010_0001
+2021-05-17 13:02:27,832 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-05-17 13:02:28,200 INFO conf.Configuration: resource-types.xml not found
+2021-05-17 13:02:28,200 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-05-17 13:02:28,903 INFO impl.YarnClientImpl: Submitted application application_1621234204010_0001
+2021-05-17 13:02:29,152 INFO mapreduce.Job: The url to track the job: http://ubuntu:8088/proxy/application_1621234204010_0001/
+2021-05-17 13:02:29,163 INFO mapreduce.Job: Running job: job_1621234204010_0001
+2021-05-17 13:02:52,384 INFO mapreduce.Job: Job job_1621234204010_0001 running in uber mode : false
+2021-05-17 13:02:52,445 INFO mapreduce.Job:  map 0% reduce 0%
+2021-05-17 13:04:00,248 INFO mapreduce.Job:  map 67% reduce 0%
+2021-05-17 13:04:06,294 INFO mapreduce.Job:  map 100% reduce 0%
+2021-05-17 13:05:00,066 INFO mapreduce.Job:  map 100% reduce 100%
+2021-05-17 13:05:06,112 INFO mapreduce.Job: Job job_1621234204010_0001 completed successfully
+2021-05-17 13:05:06,403 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=102
+		FILE: Number of bytes written=677282
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=425
+		HDFS: Number of bytes written=39
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=142904
+		Total time spent by all reduces in occupied slots (ms)=41974
+		Total time spent by all map tasks (ms)=142904
+		Total time spent by all reduce tasks (ms)=41974
+		Total vcore-milliseconds taken by all map tasks=142904
+		Total vcore-milliseconds taken by all reduce tasks=41974
+		Total megabyte-milliseconds taken by all map tasks=146333696
+		Total megabyte-milliseconds taken by all reduce tasks=42981376
+	Map-Reduce Framework
+		Map input records=7
+		Map output records=7
+		Map output bytes=82
+		Map output materialized bytes=108
+		Input split bytes=216
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=108
+		Reduce input records=7
+		Reduce output records=4
+		Spilled Records=14
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=661
+		CPU time spent (ms)=2990
+		Physical memory (bytes) snapshot=578035712
+		Virtual memory (bytes) snapshot=7769231360
+		Total committed heap usage (bytes)=415760384
+		Peak Map Physical memory (bytes)=223318016
+		Peak Map Virtual memory (bytes)=2587451392
+		Peak Reduce Physical memory (bytes)=132280320
+		Peak Reduce Virtual memory (bytes)=2596519936
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=209
+	File Output Format Counters 
+		Bytes Written=39
+hdoop@ubuntu:~/Desktop$ cd
+hdoop@ubuntu:~$ hadoop fs -ls
+Found 17 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:52 adarshhegde
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:37 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:38 empty1.txt
+-rw-r--r--   1 hdoop supergroup          3 2021-05-07 00:07 f2.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:39 input1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:05 new.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:04 new1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:08 new3.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:44 output1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:56 banking1.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 13:05 output4
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:59 prog2
+-rw-r--r--   1 hdoop supergroup        139 2021-05-17 12:59 sales_withoutHeader.csv
+-rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:54 word
+hdoop@ubuntu:~$ hadoop fs -ls output4
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-17 13:05 banking1.txt/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         39 2021-05-17 13:04 banking1.txt/part-00000
+hdoop@ubuntu:~$ hadoop fs -cat ^C
+hdoop@ubuntu:~$ hadoop fs -ls output4/part-00000
+-rw-r--r--   1 hdoop supergroup         39 2021-05-17 13:04 banking1.txt/part-00000
+hdoop@ubuntu:~$ hadoop fs -cat output4/part-00000
+2021-05-17 13:06:46,501 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Disha	1
+Mahesh	3
+Prashanth	2
+Ramya	1
