@@ -1,0 +1,473 @@
+hive> create database EmployeeDB;
+OK
+Time taken: 0.737 seconds
+hive> use EmployeeDB;
+OK
+Time taken: 0.022 seconds
+hive> create table Employee(Name string,SSN int,Salary float,Address string,Dname string,Experience int)row format delimited fields terminated by ",";
+OK
+Time taken: 0.998 seconds
+hive> desc Employee;
+OK
+name                	string              	                    
+ssn                 	int                 	                    
+salary              	float               	                    
+address             	string              	                    
+dname               	string              	                    
+experience          	int                 	                    
+Time taken: 0.64 seconds, Fetched: 6 row(s)
+hive> LOAD DATA LOCAL INPATH '/HOME/HDOOP/LA2.CSV'INTO TABLE EMPLOYEE;
+Loading data to table employeedb.employee
+OK
+Time taken: 13.087 seconds
+hive> select * from Employee;
+OK
+Harsha	5000	30000.0	Bangalore	ISE	5
+Adarsh	5001	35000.0	Sirsi	ISE	6
+Nandan	5002	36000.0	Bangalore	ISE	6
+Raghav	5003	40000.0	Hassan	CSE	6
+Dharni	5004	41000.0	Chennai	ECE	6
+Aniket	5005	45000.0	Hyderabad	ME	6
+Darshan	5006	46000.0	Honnavar	ISE	5
+Asha	5007	47000.0	Puttur	ISE	5
+Harshith	5008	20000.0	Tumkur	ECE	7
+Divine	5009	80000.0	Udupi	ISE	5
+Aditya	5010	50000.0	Bhadra	ISE	6
+Ashok	5011	24000.0	Bangalore	ISE	5
+Sujan	5012	25000.0	Mangalore	CSE	5
+Sanket	5013	26000.0	Mangalore	CSE	6
+Bharat	5014	27000.0	Gurgaon	ISE	7
+Abhay	5015	28000.0	Mumbai	ISE	5
+Sandeep	5016	30000.0	Shimoga	CSE	7
+Alok	5017	60000.0	Bihar	ISE	5
+Navami	5018	61000.0	Bangalore	ISE	5
+Anjali	5019	64000.0	Delhi	ISE	5
+Time taken: 6.224 seconds, Fetched: 20 row(s)
+
+hive> insert into Employee values("Aayesha",5020,15000.0,"Dehradhun","ISE",7),("Aishwarya",5021,20000.0,"Mysore","ME",4),
+("Ajay",5022,25000.0,"KGF","CSE",7),("Gagan",5023,80000.0,"Mandya","ECE",4),("Guru",5024,75000.0,"Dharwad","AE",6),("Akash",5025,25000.0,"Bangalore","CSE",3);
+Query ID = hdoop_20210703071353_73b1a88c-afe4-4ac8-84e6-c10a90ad85c4
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625316400333_0005, Tracking URL = http://ubuntu:8088/proxy/application_1625316400333_0005/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625316400333_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-03 07:14:01,914 Stage-1 map = 0%,  reduce = 0%
+2021-07-03 07:14:17,730 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 25.34 sec
+2021-07-03 07:14:24,924 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 27.67 sec
+MapReduce Total cumulative CPU time: 27 seconds 670 msec
+Ended Job = job_1625316400333_0005
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/employeedb.db/employee/.hive-staging_hive_2021-07-03_07-13-53_433_3991061846091399690-1/-ext-10000
+Loading data to table employeedb.employee
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 27.67 sec   HDFS Read: 22186 HDFS Write: 594 SUCCESS
+Total MapReduce CPU Time Spent: 27 seconds 670 msec
+OK
+Time taken: 33.773 seconds
+hive> select * from Employee;
+OK
+Harsha	5000	30000.0	Bangalore ISE	5
+Adarsh	5001	35000.0	Sirsi	  ISE	6
+Nandan	5002	36000.0	Bangalore ISE	6
+Raghav	5003	40000.0	Hassan	  CSE	6
+Dharni	5004	41000.0	Chennai	  ECE	6
+Aniket	5005	45000.0	Hyderabad ME	6
+Darshan	5006	46000.0	Honnavar  ISE	5
+Asha	5007	47000.0	Puttur	  ISE	5
+Harshith5008	20000.0	Tumkur	  ECE	7
+Divine	5009	80000.0	Udupi	  ISE	5
+Aditya	5010	50000.0	Bhadra	  ISE	6
+Ashok	5011	24000.0	Bangalore ISE	5
+Sujan	5012	25000.0	Mangalore CSE	5
+Sanket	5013	26000.0	Mangalore CSE	6
+Bharat	5014	27000.0	Gurgaon	  ISE	7
+Abhay	5015	28000.0	Mumbai	  ISE	5
+Sandeep	5016	30000.0	Shimoga	  CSE	7
+Alok	5017	60000.0	Bihar	  ISE	5
+Navami	5018	61000.0	Bangalore ISE	5
+Anjali	5019	64000.0	Delhi	  ISE	5
+Aayesha	5020	15000.0	Dehradhun ISE	7
+Aishwarya5021	20000.0	Mysore	  ME	4
+Ajay	5022	25000.0	KGF	  CSE	7
+Gagan	5023	80000.0	Mandya	  ECE	4
+Guru	5024	75000.0	Dharwad	  AE	6
+Akash   5025    25000.0 Bangalore CSE   3
+Time taken: 19.088 seconds, Fetched: 25 row(s)
+hive>  show tables;
+OK
+employee
+Time taken: 0.2 seconds, Fetched: 1 row(s)
+hive>  alter table Employee rename to Emp;
+OK
+Time taken: 0.224 seconds
+hive>  show tables;
+OK
+emp
+Time taken: 0.029 seconds, Fetched: 1 row(s)
+hive>  desc emp;
+OK
+name                	string              	                    
+ssn                 	int                 	                    
+salary              	float               	                    
+address             	string              	                    
+dname               	string              	                    
+experience          	int                 	                    
+Time taken: 0.041 seconds, Fetched: 6 row(s)
+hive>  alter table Employee change  Dname Deptname string;
+FAILED: SemanticException [Error 10001]: Table not found Employee
+hive>  alter table Emp change  Dname Deptname string;
+OK
+Time taken: 0.127 seconds
+hive>  desc emp;
+OK
+name                	string              	                    
+ssn                 	int                 	                    
+salary              	float               	                    
+address             	string              	                    
+deptname            	string              	                    
+experience          	int                 	                    
+Time taken: 0.031 seconds, Fetched: 6 row(s)
+hive> select Name,SSN,Salary from emp where Salary>=50000;
+OK
+Gagan	5023	80000.0
+Guru	5024	75000.0
+Divine	5009	80000.0
+Aditya	5010	50000.0
+Alok	5017	60000.0
+Navami	5018	61000.0
+Anjali	5019	64000.0
+Time taken: 1.343 seconds, Fetched: 7 row(s)
+hive> select Name,address,experience from emp where address="Bangalore" and experience<5;
+OK
+Akash	Bangalore	3
+Time taken: 0.337 seconds, Fetched: 1 row(s)
+hive> create view Emp_Details as select Name,Deptname from emp; 
+OK
+Time taken: 1.712 seconds
+hive> select * from Emp_Details;
+OK
+Aayesha	ISE
+Aishwarya	ME
+Ajay	CSE
+Gagan	ECE
+Guru	AE
+Akash	CSE
+Harsha	ISE
+Adarsh	ISE
+Nandan	ISE
+Raghav	CSE
+Dharni	ECE
+Aniket	ME
+Darshan	ISE
+Asha	ISE
+Harshith	ECE
+Divine	ISE
+Aditya	ISE
+Ashok	ISE
+Sujan	CSE
+Sanket	CSE
+Bharat	ISE
+Abhay	ISE
+Sandeep	CSE
+Alok	ISE
+Navami	ISE
+Anjali	ISE
+Time taken: 0.812 seconds, Fetched: 26 row(s)
+hive> desc Emp_Details;
+OK
+name                	string              	                    
+deptname            	string              	                    
+Time taken: 0.164 seconds, Fetched: 2 row(s)
+hive> select name,ssn from emp group by name,ssn order by name;
+Query ID = hdoop_20210703084449_b69f2eca-0a4c-4f0b-a74c-6d6c8fc9dbb8
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625326304682_0004, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0004/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0004
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-03 08:44:55,213 Stage-1 map = 0%,  reduce = 0%
+2021-07-03 08:44:59,312 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.47 sec
+2021-07-03 08:45:04,445 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.78 sec
+MapReduce Total cumulative CPU time: 2 seconds 780 msec
+Ended Job = job_1625326304682_0004
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625326304682_0005, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0005/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0005
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2021-07-03 08:45:16,443 Stage-2 map = 0%,  reduce = 0%
+2021-07-03 08:45:20,576 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.2 sec
+2021-07-03 08:45:25,709 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 2.93 sec
+MapReduce Total cumulative CPU time: 2 seconds 930 msec
+Ended Job = job_1625326304682_0005
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 2.78 sec   HDFS Read: 13087 HDFS Write: 793 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 2.93 sec   HDFS Read: 8203 HDFS Write: 706 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 710 msec
+OK
+Aayesha	5020
+Abhay	5015
+Adarsh	5001
+Aditya	5010
+Aishwarya	5021
+Ajay	5022
+Akash	5025
+Alok	5017
+Aniket	5005
+Anjali	5019
+Asha	5007
+Ashok	5011
+Bharat	5014
+Darshan	5006
+Dharni	5004
+Divine	5009
+Gagan	5023
+Guru	5024
+Harsha	5000
+Harshith	5008
+Nandan	5002
+Navami	5018
+Raghav	5003
+Sandeep	5016
+Sanket	5013
+Sujan	5012
+Time taken: 37.243 seconds, Fetched: 26 row(s)
+hive> select max(salary),min(salary),avg(salary) from emp;
+Query ID = hdoop_20210703084736_dfc5874b-032d-437a-b46e-3a2ef96cba99
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625326304682_0006, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0006/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0006
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-03 08:47:42,349 Stage-1 map = 0%,  reduce = 0%
+2021-07-03 08:47:47,497 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.66 sec
+2021-07-03 08:47:53,658 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.19 sec
+MapReduce Total cumulative CPU time: 5 seconds 190 msec
+Ended Job = job_1625326304682_0006
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.19 sec   HDFS Read: 18503 HDFS Write: 133 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 190 msec
+OK
+80000.0	15000.0	40576.92307692308
+Time taken: 18.57 seconds, Fetched: 1 row(s)
+hive> create table department(dno int,dname string)row format delimited fields terminated by ",";
+OK
+Time taken: 0.544 seconds
+hive> insert into department values(6,"ISE"),(1,"CSE"),(2,"ECE"),(5,"EEE"),(3,"AE"),(4,"ME");
+Query ID = hdoop_20210703085517_2da6bcf8-1ad9-4f45-b834-6fe8cc690592
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625326304682_0007, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0007/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0007
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-03 08:55:24,308 Stage-1 map = 0%,  reduce = 0%
+2021-07-03 08:55:30,595 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 7.03 sec
+2021-07-03 08:55:35,727 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.51 sec
+MapReduce Total cumulative CPU time: 8 seconds 510 msec
+Ended Job = job_1625326304682_0007
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/employeedb.db/department/.hive-staging_hive_2021-07-03_08-55-17_267_5975454517276939290-1/-ext-10000
+Loading data to table employeedb.department
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.51 sec   HDFS Read: 15866 HDFS Write: 342 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 510 msec
+OK
+Time taken: 20.311 seconds
+hive> select * from department;
+OK
+6	ISE
+1	CSE
+2	ECE
+5	EEE
+3	AE
+4	ME
+Time taken: 3.42 seconds, Fetched: 6 row(s)
+
+hive> select name,ssn,d.deptname,dno from emp e full outer join department d on e.deptname=d.deptname;
+Query ID = hdoop_20210703090948_f15491bd-c455-463c-8ced-4b370c5d86cb
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625326304682_0010, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0010/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0010
+Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+2021-07-03 09:09:57,071 Stage-1 map = 0%,  reduce = 0%
+2021-07-03 09:10:52,913 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 125.87 sec
+2021-07-03 09:11:09,193 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 166.57 sec
+2021-07-03 09:11:17,724 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 169.24 sec
+MapReduce Total cumulative CPU time: 2 minutes 49 seconds 240 msec
+Ended Job = job_1625326304682_0010
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 169.24 sec   HDFS Read: 18268 HDFS Write: 883 SUCCESS
+Total MapReduce CPU Time Spent: 2 minutes 49 seconds 240 msec
+OK
+Guru	5024	AE	3
+Akash	5025	CSE	1
+Sanket	5013	CSE	1
+Ajay	5022	CSE	1
+Raghav	5003	CSE	1
+Sujan	5012	CSE	1
+Sandeep	5016	CSE	1
+Gagan	5023	ECE	2
+Dharni	5004	ECE	2
+Harshith	5008	ECE	2
+NULL	NULL	EEE	5
+Anjali	5019	ISE	6
+Navami	5018	ISE	6
+Alok	5017	ISE	6
+Abhay	5015	ISE	6
+Bharat	5014	ISE	6
+Ashok	5011	ISE	6
+Aditya	5010	ISE	6
+Divine	5009	ISE	6
+Asha	5007	ISE	6
+Darshan	5006	ISE	6
+Nandan	5002	ISE	6
+Adarsh	5001	ISE	6
+Harsha	5000	ISE	6
+Aayesha	5020	ISE	6
+Aishwarya	5021	ME	4
+Aniket	5005	ME	4
+Time taken: 90.669 seconds, Fetched: 27 row(s)
+hive> select name,ssn,d.deptname,dno from emp e left outer join department d on e.deptname=d.deptname;
+Query ID = hdoop_20210703091523_1917b41e-438b-4837-805e-567ff1197abe
+Total jobs = 1
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625326304682_0011, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0011/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0011
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-07-03 09:15:41,893 Stage-3 map = 0%,  reduce = 0%
+2021-07-03 09:15:45,997 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 2.12 sec
+MapReduce Total cumulative CPU time: 2 seconds 120 msec
+Ended Job = job_1625326304682_0011
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 2.12 sec   HDFS Read: 10624 HDFS Write: 859 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 120 msec
+OK
+Aayesha	5020	ISE	6
+Aishwarya	5021	ME	4
+Ajay	5022	CSE	1
+Gagan	5023	ECE	2
+Guru	5024	AE	3
+Akash	5025	CSE	1
+Harsha	5000	ISE	6
+Adarsh	5001	ISE	6
+Nandan	5002	ISE	6
+Raghav	5003	CSE	1
+Dharni	5004	ECE	2
+Aniket	5005	ME	4
+Darshan	5006	ISE	6
+Asha	5007	ISE	6
+Harshith	5008	ECE	2
+Divine	5009	ISE	6
+Aditya	5010	ISE	6
+Ashok	5011	ISE	6
+Sujan	5012	CSE	1
+Sanket	5013	CSE	1
+Bharat	5014	ISE	6
+Abhay	5015	ISE	6
+Sandeep	5016	CSE	1
+Alok	5017	ISE	6
+Navami	5018	ISE	6
+Anjali	5019	ISE	6
+Time taken: 23.698 seconds, Fetched: 26 row(s)
+
+hive> select name,ssn,d.deptname,dno from emp e right outer join department d on e.deptname=d.deptname;
+Query ID = hdoop_20210703091746_bddd2031-e2a2-47ad-a39b-dfd7ae18be39
+Total jobs = 1
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625326304682_0013, Tracking URL = http://ubuntu:8088/proxy/application_1625326304682_0013/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625326304682_0013
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-07-03 09:18:00,763 Stage-3 map = 0%,  reduce = 0%
+2021-07-03 09:18:04,861 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.92 sec
+MapReduce Total cumulative CPU time: 1 seconds 920 msec
+Ended Job = job_1625326304682_0013
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 1.92 sec   HDFS Read: 9150 HDFS Write: 883 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 920 msec
+OK
+Aayesha	5020	ISE	6
+Harsha	5000	ISE	6
+Adarsh	5001	ISE	6
+Nandan	5002	ISE	6
+Darshan	5006	ISE	6
+Asha	5007	ISE	6
+Divine	5009	ISE	6
+Aditya	5010	ISE	6
+Ashok	5011	ISE	6
+Bharat	5014	ISE	6
+Abhay	5015	ISE	6
+Alok	5017	ISE	6
+Navami	5018	ISE	6
+Anjali	5019	ISE	6
+Ajay	5022	CSE	1
+Akash	5025	CSE	1
+Raghav	5003	CSE	1
+Sujan	5012	CSE	1
+Sanket	5013	CSE	1
+Sandeep	5016	CSE	1
+Gagan	5023	ECE	2
+Dharni	5004	ECE	2
+Harshith	5008	ECE	2
+NULL	NULL	EEE	5
+Guru	5024	AE	3
+Aishwarya	5021	ME	4
+Aniket	5005	ME	4
+Time taken: 20.427 seconds, Fetched: 27 row(s)
+
+
+
+
+
